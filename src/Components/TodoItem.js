@@ -1,8 +1,8 @@
-function TodoItem() {
+function TodoItem({text, isCompleted}) {
     return(
       <li>
         <span>✅</span>
-        <p>Completar el curso de Reactjs</p>
+        <p>{text}</p>
         <span>❌</span>
       </li>
     );
