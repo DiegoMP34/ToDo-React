@@ -1,0 +1,15 @@
+.input {
+    padding: 10px;
+    font-size: 16px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.input:focus-visible{
+    outline: thin solid #FF215E;
+}
+
+.input--add{
+    width: 330px;
+    background-color: var(--color-grey);
+}

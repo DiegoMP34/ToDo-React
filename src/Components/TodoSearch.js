@@ -1,6 +1,8 @@
+import './TodoSearch.css'
+
 function TodoSearch(){
     return (
-        <input placeholder="Lavar los servicios..."/>
+        <input type='search' className="input input--search" placeholder="Lavar los servicios..."/>
     );
 }
 

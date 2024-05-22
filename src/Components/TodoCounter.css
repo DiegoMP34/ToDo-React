@@ -1,5 +1,13 @@
-h1 {
-    background-color:#FF215E;
-    color:#fff;
-    text-align: center;
+.title {
+    text-align: end;
+}
+
+.title__h1 {
+    margin: 0;
+    font-size: 40px;
+    color: var(--color-bg);
+}
+.title__descripcion{
+    font-size: 20px;
+    font-weight: 600;
 }
