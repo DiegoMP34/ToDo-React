@@ -8,12 +8,26 @@ import { TodoButton } from './Components/TodoButton.js';
 import { TodoInput } from './Components/TodoInput.js';
 import anotaciones from './imgs/card-img.jpg';
 
+const ToDos = [
+  { text: 'Asistir al curso de react', isComplete: true},
+  { text: 'Cocinar el almuerzo', isComplete: true},
+  { text: 'Ordenar los proyectos en github', isComplete: false},
+  { text: 'Revisando el código de search: á é í', isComplete: false},
+]
+
 function App() {
-  const ToDos = [
-    { text: 'Asistir al curso de react', isCompleted: true},
-    { text: 'Cocinar el almuerzo', isCompleted: false},
-    { text: 'Ordenar los proyectosde en github', isCompleted: false},
-  ]
+  const [todos, setTodos] = React.useState(ToDos)
+  const [searchValue, setSearchValue] = React.useState('');
+  
+  const completedTodos = todos.filter(todo => todo.isComplete).length;
+
+  const searchedTodos = todos.filter(todo => {
+    const todoText = todo.text.toLocaleLowerCase();
+    const searchText = searchValue.toLocaleLowerCase();
+    return todoText.includes(searchText);
+  })
+
+  console.log('Verificando los todos ' + todos);
 
   return (
     <>
@@ -28,12 +42,20 @@ function App() {
       </aside>
       <main className='main'>
         <div className='main__header'>
-          <TodoSearch/>
-          <TodoCounter taskCompleted={2} total={5}/>
+          <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+          <TodoCounter taskCompleted={completedTodos} total={todos.length}/>
         </div>
         <TodoList>
           {
-            ToDos.map(toDo => (<TodoItem key={toDo.text} text={toDo.text} isCompleted={toDo.isCompleted}/>))
+            searchedTodos.map(
+              toDo => (<TodoItem 
+                key={toDo.text} 
+                text={toDo.text} 
+                isComplete={toDo.isComplete} 
+                todos={todos}
+                setTodos={setTodos}
+              />
+            ))
           }
         </TodoList>
       </main>

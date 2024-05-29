@@ -1,0 +1,9 @@
+.item__uncheck{
+    fill: #FF215E;
+    cursor: pointer;
+    display: block;
+}
+
+.item__uncheck--desactive{
+    display: none;
+}
