@@ -15,19 +15,30 @@ const ToDos = [
   { text: 'Revisando el código de search: á é í', isComplete: false},
 ]
 
-function App() {
-  const [todos, setTodos] = React.useState(ToDos)
+function App() {  
+  // Estados globales
+  const [todos, setTodos] = React.useState(ToDos);
   const [searchValue, setSearchValue] = React.useState('');
   
-  const completedTodos = todos.filter(todo => todo.isComplete).length;
-
+  const completedTodos = todos.filter(todo => todo.isComplete === true).length;
+  
   const searchedTodos = todos.filter(todo => {
     const todoText = todo.text.toLocaleLowerCase();
     const searchText = searchValue.toLocaleLowerCase();
     return todoText.includes(searchText);
   })
-
-  console.log('Verificando los todos ' + todos);
+  
+  function completeTodo(text){
+    const newTodo = [...todos]
+    const todoIndex = newTodo.findIndex(todo => todo.text === text);
+    newTodo[todoIndex].isComplete = !newTodo[todoIndex].isComplete;
+    setTodos(newTodo);
+  }
+  
+  function deleteTodo(text){
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+    setTodos(todos.toSpliced(todoIndex,1));
+  }
 
   return (
     <>
@@ -43,17 +54,17 @@ function App() {
       <main className='main'>
         <div className='main__header'>
           <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
-          <TodoCounter taskCompleted={completedTodos} total={todos.length}/>
+          <TodoCounter tasksCompleted={completedTodos} total={todos.length}/>
         </div>
         <TodoList>
           {
             searchedTodos.map(
-              toDo => (<TodoItem 
-                key={toDo.text} 
-                text={toDo.text} 
-                isComplete={toDo.isComplete} 
-                todos={todos}
-                setTodos={setTodos}
+              todo => (<TodoItem 
+                key={todo.text} 
+                text={todo.text} 
+                isComplete={todo.isComplete} 
+                onComplete={()=>completeTodo(todo.text)}
+                onDelete={()=>deleteTodo(todo.text)}                          
               />
             ))
           }

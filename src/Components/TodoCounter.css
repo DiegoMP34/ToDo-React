@@ -1,5 +1,6 @@
 .title {
     text-align: end;
+    min-height: 83px;
 }
 
 .title__h1 {
