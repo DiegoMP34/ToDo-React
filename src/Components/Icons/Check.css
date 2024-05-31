@@ -1,9 +1,0 @@
-.item__check{
-    fill: #FF215E;
-    cursor: pointer;
-    display: none;
-}
-
-.item__check--active{
-    display: block;
-}
