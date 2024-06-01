@@ -8,16 +8,27 @@ import { TodoButton } from './Components/TodoButton.js';
 import { TodoInput } from './Components/TodoInput.js';
 import anotaciones from './imgs/card-img.jpg';
 
-const ToDos = [
+/* const defaultTodos = [
   { text: 'Asistir al curso de react', isComplete: true},
   { text: 'Cocinar el almuerzo', isComplete: true},
   { text: 'Ordenar los proyectos en github', isComplete: false},
   { text: 'Revisando el código de search: á é í', isComplete: false},
-]
+] 
+localStorage.setItem('TODOS_V1', defaultTodos);
+localStorage.removeItem('TODOS_V1');
+*/
 
-function App() {  
+function updateStorage(newTodos){
+  localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+}
+
+function getStorage() {
+  return JSON.parse(localStorage.getItem('TODOS_V1')) || [];
+}
+
+function App() {
   // Estados globales
-  const [todos, setTodos] = React.useState(ToDos);
+  const [todos, setTodos] = React.useState(getStorage());
   const [searchValue, setSearchValue] = React.useState('');
   
   const completedTodos = todos.filter(todo => todo.isComplete === true).length;
@@ -28,16 +39,22 @@ function App() {
     return todoText.includes(searchText);
   })
   
+  //persistencia
+  function saveSesionTodos(newTodos){
+    updateStorage(newTodos);
+    setTodos(newTodos);
+  }
+
   function completeTodo(text){
-    const newTodo = [...todos]
-    const todoIndex = newTodo.findIndex(todo => todo.text === text);
-    newTodo[todoIndex].isComplete = !newTodo[todoIndex].isComplete;
-    setTodos(newTodo);
+    const newTodos = [...todos]
+    const todoIndex = newTodos.findIndex(todo => todo.text === text);
+    newTodos[todoIndex].isComplete = !newTodos[todoIndex].isComplete;
+    saveSesionTodos(newTodos);
   }
   
   function deleteTodo(text){
     const todoIndex = todos.findIndex(todo => todo.text === text);
-    setTodos(todos.toSpliced(todoIndex,1));
+    saveSesionTodos(todos.toSpliced(todoIndex,1));
   }
 
   return (
