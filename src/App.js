@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import './App.css';
 import { TodoCounter } from './Components/TodoCounter.js';
 import { TodoSearch } from './Components/TodoSearch.js';
@@ -8,29 +8,23 @@ import { TodoButton } from './Components/TodoButton.js';
 import { TodoInput } from './Components/TodoInput.js';
 import anotaciones from './imgs/card-img.jpg';
 
-/* const defaultTodos = [
-  { text: 'Asistir al curso de react', isComplete: true},
-  { text: 'Cocinar el almuerzo', isComplete: true},
-  { text: 'Ordenar los proyectos en github', isComplete: false},
-  { text: 'Revisando el código de search: á é í', isComplete: false},
-] 
-localStorage.setItem('TODOS_V1', defaultTodos);
-localStorage.removeItem('TODOS_V1');
-*/
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = JSON.parse(localStorage.getItem(itemName)) || initialValue;
 
-function updateStorage(newTodos){
-  localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-}
+  const [item, setItem] = useState(localStorageItem);
+  
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  }
 
-function getStorage() {
-  return JSON.parse(localStorage.getItem('TODOS_V1')) || [];
+  return [item, saveItem]
 }
 
 function App() {
-  // Estados globales
-  const [todos, setTodos] = React.useState(getStorage());
-  const [searchValue, setSearchValue] = React.useState('');
-  
+  const [todos, setTodos] = useLocalStorage('TODOS_V1', []);
+  const [searchValue, setSearchValue] = useState('');
+
   const completedTodos = todos.filter(todo => todo.isComplete === true).length;
   
   const searchedTodos = todos.filter(todo => {
@@ -38,23 +32,17 @@ function App() {
     const searchText = searchValue.toLocaleLowerCase();
     return todoText.includes(searchText);
   })
-  
-  //persistencia
-  function saveSesionTodos(newTodos){
-    updateStorage(newTodos);
-    setTodos(newTodos);
-  }
 
   function completeTodo(text){
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(todo => todo.text === text);
     newTodos[todoIndex].isComplete = !newTodos[todoIndex].isComplete;
-    saveSesionTodos(newTodos);
+    setTodos(newTodos);
   }
   
   function deleteTodo(text){
     const todoIndex = todos.findIndex(todo => todo.text === text);
-    saveSesionTodos(todos.toSpliced(todoIndex,1));
+    setTodos(todos.toSpliced(todoIndex,1));
   }
 
   return (
