@@ -1,5 +1,5 @@
 import './TodoItem.css'
-import { TodoIcon } from './Icons/TodoIcon.js';
+import { TodoIcon } from '../TodoIcon';
 
 function TodoItem({text, isComplete, onComplete, onDelete}) {
     return(
