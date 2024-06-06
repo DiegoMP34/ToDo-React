@@ -7,6 +7,8 @@ import { TodoInput } from '../TodoInput';
 import anotaciones from '../imgs/card-img.jpg';
 
 function AppUI({
+    loading,
+    error,
     searchValue,
     setSearchValue,
     completedTodos,
@@ -33,6 +35,10 @@ function AppUI({
             <TodoCounter tasksCompleted={completedTodos} total={totalTodos}/>
           </div>
           <TodoList>
+            {loading && <p>Esta cargando...</p>}
+            {error && <p>Hubo un error :/</p>}
+            {(!loading && totalTodos === 0) && <p>Empieza añadiendo una tarea.</p>}
+
             {
               searchedTodos.map(
                 todo => (<TodoItem 

@@ -4,9 +4,14 @@ import { useLocalStorage } from './useLocalStorage.js';
 import { AppUI } from './AppUI.js';
 
 function App() {
-  const [todos, setTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item : todos,
+    saveItem: setTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = useState('');
-
+  
   const completedTodos = todos.filter(todo => todo.isComplete === true).length;
   
   const searchedTodos = todos.filter(todo => {
@@ -29,6 +34,8 @@ function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       searchValue={searchValue}
       setSearchValue={setSearchValue}
       completedTodos={completedTodos}
