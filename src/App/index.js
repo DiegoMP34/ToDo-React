@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import './App.css';
 import { useLocalStorage } from './useLocalStorage.js';
 import { AppUI } from './AppUI.js';
 

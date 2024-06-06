@@ -4,6 +4,10 @@ import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { TodoButton } from '../TodoButton';
 import { TodoInput } from '../TodoInput';
+import { TodoLoading } from '../TodoLoading';
+import { TodoError } from '../TodoError';
+import { EmptyTodo } from '../EmptyTodo';
+import './App.css';
 import anotaciones from '../imgs/card-img.jpg';
 
 function AppUI({
@@ -21,7 +25,7 @@ function AppUI({
     return(
         <>
         <aside className='create'>
-          <h2 className='create__title'>Hola! <span className='create__name'>Nombre</span></h2>
+          <h2 className='create__title'>Hola! <span className='create__name'>Diego</span></h2>
           <p className='create__question'>Qué vas hacer hoy?</p>
           <TodoInput placeholder='Ve a por ello'/>
           <div className='card'>
@@ -35,9 +39,16 @@ function AppUI({
             <TodoCounter tasksCompleted={completedTodos} total={totalTodos}/>
           </div>
           <TodoList>
-            {loading && <p>Esta cargando...</p>}
-            {error && <p>Hubo un error :/</p>}
-            {(!loading && totalTodos === 0) && <p>Empieza añadiendo una tarea.</p>}
+            {loading && (
+              <>
+                <TodoLoading/>
+                <TodoLoading/>
+                <TodoLoading/>
+                <TodoLoading/>
+              </>
+            )}
+            {error && <TodoError />}
+            {(!loading && totalTodos === 0) && <EmptyTodo/>}
 
             {
               searchedTodos.map(
