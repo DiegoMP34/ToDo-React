@@ -47,8 +47,8 @@ function AppUI({
                 <TodoLoading/>
               </>
             )}
-            {error && <TodoError />}
-            {(!loading && totalTodos === 0) && <EmptyTodo/>}
+            {error && <TodoError/>}
+            {(!loading && !error && totalTodos === 0) && <EmptyTodo/>}
 
             {
               searchedTodos.map(

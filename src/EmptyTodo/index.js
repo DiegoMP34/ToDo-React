@@ -1,7 +1,12 @@
+import { ReactComponent as AddSVG } from './add.svg';
+import './EmptyTodo.css'
 
 function EmptyTodo() {
     return(
-        <p> Añade una tarea </p>
+        <div className='empty'>
+            <AddSVG/>
+            <p>Añade una tarea</p>
+        </div>
     );
 }
 

@@ -1,8 +1,13 @@
+import { TodoIcon } from "../TodoIcon";
+import "./TodoError.css"
 
 function TodoError() {
     return(
-        <p> Hubo un error! </p>
+        <div className="error">
+            <TodoIcon type="error"/>
+            <p>Ha ocurrido un error, por favor recarga la pagina</p>
+        </div>
     );
 }
 
-export { TodoError}
+export { TodoError }

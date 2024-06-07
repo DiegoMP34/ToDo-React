@@ -3,15 +3,13 @@
     cursor: pointer;
 }
 
-/* .icon__check{
-    display: block;
-}
-.icon__uncheck{
-    display: block;
-}s */
-
 .icon--delete{
     position: absolute;
     right: 5px;
     top: -10px;
+}
+.icon--error{
+    width: 70px;
+    height: 70px;
+    cursor: initial;
 }
