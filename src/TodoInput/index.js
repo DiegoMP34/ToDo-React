@@ -1,8 +1,8 @@
 import './TodoInput.css'
 
-function TodoInput({placeholder}) {
+function TodoInput({id, placeholder}) {
     return (
-        <input type='text' className="input input--add" placeholder={placeholder}></input>
+            <input type='text' id={`${id}`} className="input input--add" placeholder={placeholder}></input>
     );
 }
 

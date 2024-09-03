@@ -4,12 +4,13 @@ import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
-import { TodoButton } from '../TodoButton';
-import { TodoInput } from '../TodoInput';
 import { TodoLoading } from '../TodoLoading';
 import { TodoError } from '../TodoError';
 import { EmptyTodo } from '../EmptyTodo';
-import anotaciones from '../imgs/card-img.jpg';
+import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
+import { CreateTodoIcon } from '../TodoIcon/CreateTodoIcon';
+import { TodoFormModal } from '../TodoFormModal';
 import './App.css';
 
 function AppUI() {
@@ -19,20 +20,13 @@ function AppUI() {
     totalTodos,
     searchedTodos,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    openModal,
   } = useContext(TodoContext);
 
   return(
-      <>
-      <aside className='create'>
-        <h2 className='create__title'>Hola! <span className='create__name'>Diego</span></h2>
-        <p className='create__question'>Qué vas hacer hoy?</p>
-        <TodoInput placeholder='Ve a por ello'/>
-        <div className='card'>
-          <img className='card__img' alt='anotaciones' src={anotaciones}></img>
-          <TodoButton/>
-        </div>
-      </aside>
+    <>
+      <TodoForm/>
       <main className='main'>
         <div className='main__header'>
           <TodoSearch/>
@@ -62,7 +56,13 @@ function AppUI() {
             ))
           }
         </TodoList>
+        <CreateTodoIcon/>
       </main>
+      {openModal && (
+        <Modal>
+          <TodoFormModal/>
+        </Modal>
+      )}
     </>
   );
 }

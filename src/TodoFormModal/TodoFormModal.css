@@ -1,0 +1,12 @@
+.formModal{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: var(--color-white);
+}
+
+@media (320px <= width <= 1024px) {
+    .formModal{
+        display: flex;
+    }
+}

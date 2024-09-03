@@ -1,0 +1,35 @@
+.form{
+    margin: 20px 0;
+    padding: 19px;
+    border-radius: 25px;
+    background-color: var(--color-white);
+}
+.form__title {
+    margin-top: 39px;
+    margin-bottom: 0;
+    font-size: 38px;
+}
+.form__name {
+    color: var(--color-bg);
+}
+.form__question {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__img{
+    width: 265px;
+    margin-top: 18px;
+}
+
+@media (320px <= width <= 1024px) {
+    .form{
+        display: none;
+    }
+  }
