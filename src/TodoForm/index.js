@@ -29,7 +29,7 @@ function TodoForm() {
     return (
         <form className='form' onSubmit={onSubmit}>
             <h2 className='form__title'>
-                Hola! <span className='form__name'>Diego</span>
+                Hola!
             </h2>
             <label htmlFor='task' className='form__question'>Qué vas hacer hoy?</label>
             <TodoInput id='task' placeholder='Ve a por ello' value={newTodoValue} onChange={onChange}/>
