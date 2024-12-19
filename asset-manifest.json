@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ToDo-React/static/css/main.5ab77600.css",
+    "main.js": "/ToDo-React/static/js/main.c4a8df29.js",
+    "static/media/background.jpg": "/ToDo-React/static/media/background.0103cd7461affcba243c.jpg",
+    "static/media/card-img.jpg": "/ToDo-React/static/media/card-img.3516a5414ecd3706cf3e.jpg",
+    "static/media/add.svg": "/ToDo-React/static/media/add.46e82d28256f3cff73b2683cf97191c0.svg",
+    "index.html": "/ToDo-React/index.html",
+    "static/media/uncheck.svg": "/ToDo-React/static/media/uncheck.83cb5e1fad352d23162b2a097d04a4b7.svg",
+    "static/media/check.svg": "/ToDo-React/static/media/check.3a6cfd204de9ae58433a65ce9dc8d3f7.svg",
+    "static/media/error.svg": "/ToDo-React/static/media/error.cdf1ca079f93d9298cecda624df1fa49.svg",
+    "static/media/delete.svg": "/ToDo-React/static/media/delete.b5fc6550c355d65036cc23bb4c76ab45.svg",
+    "main.5ab77600.css.map": "/ToDo-React/static/css/main.5ab77600.css.map",
+    "main.c4a8df29.js.map": "/ToDo-React/static/js/main.c4a8df29.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ab77600.css",
+    "static/js/main.c4a8df29.js"
+  ]
+}
