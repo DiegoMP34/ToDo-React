@@ -1,6 +1,13 @@
 .button{
-    padding: 10px 0;
+    padding: 10px 10px;
     font-size: 22px;
     border-radius: 16px;
     align-self: stretch;
+    font-size: large;
+}
+
+.button.cancel{
+    color: var(--color-bg);
+    border: 1px solid var(--color-bg);
+    background-color: var(--color-white);
 }

@@ -1,8 +1,14 @@
 import './TodoInput.css'
 
-function TodoInput({id, placeholder}) {
+function TodoInput({id, placeholder, value, onChange}) {
     return (
-            <input type='text' id={`${id}`} className="input input--add" placeholder={placeholder}></input>
+            <textarea 
+                id={`${id}`}
+                className="input input--add" 
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange} 
+            ></textarea>
     );
 }
 
